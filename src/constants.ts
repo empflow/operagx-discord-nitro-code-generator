@@ -18,5 +18,5 @@ export const HEADERS = {
 
 export const DATA = {
   partnerUserId:
-    "0e1f1036a407b1afbe691a292fc817ce970ca859b88c05af722677891e2d15b1",
+    "0e1f1036a407b1afbe691a292fc817ce970ca859b88c05af722677891e2d15b2",
 };

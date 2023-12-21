@@ -12,6 +12,5 @@ export default async function getCode() {
     console.log(data.token);
   } catch (err) {
     console.error((err as any).message);
-    console.log("error");
   }
 }

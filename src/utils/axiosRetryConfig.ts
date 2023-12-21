@@ -1,5 +1,5 @@
 import { IAxiosRetryConfig } from "axios-retry";
-import retryDelayCb from "./retryDelayCb";
+import retryDelayCb from "./callbacks/retryDelay";
 
 const axiosRetryConfig: IAxiosRetryConfig = {
   retries: Infinity,

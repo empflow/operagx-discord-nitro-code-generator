@@ -5,10 +5,17 @@ import getCode from "./getCode";
 import axios from "axios";
 import axiosRetry from "axios-retry";
 import axiosRetryConfig from "./utils/axiosRetryConfig";
+import express from "express";
+import appListenCb from "./utils/callbacks/appListen";
+const app = express();
+const PORT = Number(process.env.PORT) || 3000;
+
+app.get("/", (_, res) => res.json({ ok: true }));
 
 axiosRetry(axios, axiosRetryConfig);
 
 (async () => {
   await connectDb();
+  app.listen(PORT, appListenCb(PORT));
   while (true) await getCode();
 })();

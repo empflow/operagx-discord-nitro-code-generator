@@ -1,12 +1,12 @@
 import dotenv from "dotenv";
 dotenv.config();
-import axios from "axios";
-import axiosRetry from "axios-retry";
-import retryDelayCb from "./utils/retryDelayCb";
 import connectDb from "./utils/connectDb";
 import getCode from "./getCode";
+import axios from "axios";
+import axiosRetry from "axios-retry";
+import axiosRetryConfig from "./utils/axiosRetryConfig";
 
-axiosRetry(axios, { retries: Infinity, retryDelay: retryDelayCb });
+axiosRetry(axios, axiosRetryConfig);
 
 (async () => {
   await connectDb();

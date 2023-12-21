@@ -16,8 +16,8 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const axios_1 = __importDefault(require("axios"));
 const axios_retry_1 = __importDefault(require("axios-retry"));
-const retryDelayCb_1 = __importDefault(require("./retryDelayCb"));
-const connectDb_1 = __importDefault(require("./connectDb"));
+const retryDelayCb_1 = __importDefault(require("./utils/retryDelayCb"));
+const connectDb_1 = __importDefault(require("./utils/connectDb"));
 const getCode_1 = __importDefault(require("./getCode"));
 (0, axios_retry_1.default)(axios_1.default, { retries: Infinity, retryDelay: retryDelayCb_1.default });
 (() => __awaiter(void 0, void 0, void 0, function* () {

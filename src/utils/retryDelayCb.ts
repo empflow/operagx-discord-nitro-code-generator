@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 
 export default function retryDelayCb(retryCount: number, _err: AxiosError) {
-  const DELAY_MS = 500;
-  return retryCount * DELAY_MS;
+  const DELAY_FACTOR_MS = 2000;
+  console.log(`retry attempt ${retryCount}`);
+  return retryCount * DELAY_FACTOR_MS;
 }

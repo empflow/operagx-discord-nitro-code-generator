@@ -11,6 +11,7 @@ export default async function getCode() {
     await Code.create({ code: data.token });
     console.log(data.token);
   } catch (err) {
-    console.error(err);
+    console.error((err as any).message);
+    console.log("error");
   }
 }

@@ -12,16 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
 const axios_1 = __importDefault(require("axios"));
-const axios_retry_1 = __importDefault(require("axios-retry"));
-const retryDelayCb_1 = __importDefault(require("./retryDelayCb"));
-const connectDb_1 = __importDefault(require("./connectDb"));
-const getCode_1 = __importDefault(require("./getCode"));
-(0, axios_retry_1.default)(axios_1.default, { retries: Infinity, retryDelay: retryDelayCb_1.default });
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    yield (0, connectDb_1.default)();
-    while (true)
-        yield (0, getCode_1.default)();
-}))();
+const constants_1 = require("./constants");
+const Code_1 = __importDefault(require("./models/Code"));
+function getCode() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const { data } = yield axios_1.default.post(constants_1.DISCORD_URL, constants_1.DATA, {
+                headers: constants_1.HEADERS,
+            });
+            yield Code_1.default.create({ code: data.token });
+            console.log(data.token);
+        }
+        catch (err) {
+            console.error(err);
+        }
+    });
+}
+exports.default = getCode;

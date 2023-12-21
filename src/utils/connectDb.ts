@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import getEnvVar from "./utils/getEnvVar";
+import getEnvVar from "./getEnvVar";
 
 export default function connectDb() {
   const MONGO_URL = getEnvVar("MONGO_URL");

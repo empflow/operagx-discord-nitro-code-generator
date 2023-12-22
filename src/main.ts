@@ -10,7 +10,7 @@ import appListenCb from "./utils/callbacks/appListen";
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-app.get("/", (_, res) => res.json({ ok: true }));
+app.all("/", (_, res) => res.send("ok"));
 
 axiosRetry(axios, axiosRetryConfig);
 
